@@ -3,14 +3,8 @@ services:
     build: .
     restart: unless-stopped
     ports:
-      - "127.0.0.1:3042:3042"
+      - "3042:3042"
     environment:
       - NODE_ENV=production
     env_file:
       - .env
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
