@@ -3,7 +3,7 @@ services:
     build: .
     restart: unless-stopped
     ports:
-      - "3042:3042"  # فتح البورت للعالم الخارجي (للتجربة فقط)
+      - "127.0.0.1:3042:3042"
     environment:
       - NODE_ENV=production
     env_file:
