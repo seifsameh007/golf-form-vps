@@ -1,0 +1,269 @@
+/* ==========================================
+   Golf House Development - Custom Styles
+   ========================================== */
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+  50% { transform: translateY(-30px) rotate(5deg); opacity: 0.6; }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.3); }
+  50% { box-shadow: 0 0 20px 5px rgba(212, 175, 55, 0.15); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+/* Glass Card */
+.glass-card {
+  background: rgba(37, 37, 37, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(80, 80, 80, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card:hover {
+  border-color: rgba(212, 175, 55, 0.15);
+}
+
+/* Floating Particles */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(212, 175, 55, 0.4);
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+}
+
+.particle-1 { top: 20%; right: 15%; animation-delay: 0s; animation-duration: 8s; }
+.particle-2 { top: 60%; right: 80%; animation-delay: 2s; animation-duration: 10s; width: 4px; height: 4px; }
+.particle-3 { top: 40%; right: 50%; animation-delay: 4s; animation-duration: 12s; width: 8px; height: 8px; }
+.particle-4 { top: 80%; right: 30%; animation-delay: 1s; animation-duration: 9s; width: 5px; height: 5px; }
+.particle-5 { top: 10%; right: 60%; animation-delay: 3s; animation-duration: 11s; width: 3px; height: 3px; }
+
+/* Form Steps */
+.form-step {
+  display: none;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.form-step.active {
+  display: block;
+}
+
+/* Step Progress Icons */
+.step-icon.active > div,
+.step-icon.completed > div {
+  border-color: #d4af37 !important;
+}
+
+.step-icon.active svg,
+.step-icon.completed svg {
+  color: #d4af37 !important;
+}
+
+.step-icon.completed > div {
+  background: rgba(212, 175, 55, 0.15) !important;
+}
+
+.step-line.active {
+  background-color: #d4af37 !important;
+}
+
+/* Room Button Selected */
+.room-btn.selected {
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.5), 0 10px 25px rgba(212, 175, 55, 0.3);
+  transform: scale(1.05);
+}
+
+/* Day Button Active */
+.day-btn.active-day {
+  background: linear-gradient(to left, #e8c820, #d4af37, #e8c820) !important;
+  color: #111 !important;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* Time Picker */
+.time-picker-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.time-picker-scroll {
+  height: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding: 80px 0;
+}
+
+.time-picker-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.time-picker-item {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: center;
+  font-size: 1.1rem;
+  color: rgba(176, 176, 176, 0.4);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.time-picker-item.selected {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.3rem;
+  transform: scale(1.1);
+}
+
+.time-picker-item.near {
+  color: rgba(176, 176, 176, 0.7);
+  font-size: 1.1rem;
+}
+
+.time-picker-highlight {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  right: 20px;
+  height: 44px;
+  transform: translateY(-50%);
+  background: rgba(212, 175, 55, 0.08);
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.time-picker-fade-top,
+.time-picker-fade-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 70px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.time-picker-fade-top {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(37, 37, 37, 0.95), transparent);
+}
+
+.time-picker-fade-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(37, 37, 37, 0.95), transparent);
+}
+
+/* Filter Buttons */
+.filter-btn.active-filter {
+  background: rgba(212, 175, 55, 0.1) !important;
+  color: #d4af37 !important;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* Request Card Animation */
+.request-card {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+/* Custom scrollbar for dashboard */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #303030;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #505050;
+}
+
+/* Responsive - Mobile sidebar */
+@media (max-width: 1024px) {
+  aside {
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+  
+  aside.open {
+    transform: translateX(0);
+  }
+  
+  main {
+    margin-right: 0 !important;
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, input, select {
+  transition: all 0.2s ease;
+}
+
+/* Form input focus glow */
+.form-input:focus {
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+/* Select dropdown styling */
+select option {
+  background: #252525;
+  color: #fff;
+  padding: 8px;
+}

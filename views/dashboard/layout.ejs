@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= title %>
+  </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { tajawal: ['Tajawal', 'sans-serif'] },
+          colors: {
+            gold: { 50: '#fdf9e7', 100: '#fbf0b5', 200: '#f5e06b', 300: '#e8c820', 400: '#d4af37', 500: '#b8960c', 600: '#957a0a', 700: '#715c08', 800: '#4d3f06', 900: '#2a2103' },
+            dark: { 50: '#f5f5f5', 100: '#e0e0e0', 200: '#b0b0b0', 300: '#808080', 400: '#505050', 500: '#303030', 600: '#252525', 700: '#1a1a1a', 800: '#111111', 900: '#0a0a0a' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="font-tajawal bg-dark-900 text-white min-h-screen">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside
+      class="w-72 bg-dark-800/90 backdrop-blur-xl border-l border-dark-600/50 flex flex-col fixed right-0 top-0 bottom-0 z-50">
+      <!-- Brand -->
+      <div class="p-6 border-b border-dark-600/50">
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400/30 to-gold-600/10 flex items-center justify-center">
+            <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="font-bold text-white">Golf House</h2>
+            <p class="text-xs text-dark-300">لوحة التحكم</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="flex-1 p-4 space-y-2">
+        <a href="/dashboard"
+          class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 <%= page === 'overview' ? 'bg-gold-400/10 text-gold-400 border border-gold-400/20' : 'text-dark-200 hover:bg-dark-700/50 hover:text-white' %>">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+          </svg>
+          <span class="font-medium">لمحة</span>
+        </a>
+        <a href="/dashboard/requests"
+          class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 <%= page === 'requests' ? 'bg-gold-400/10 text-gold-400 border border-gold-400/20' : 'text-dark-200 hover:bg-dark-700/50 hover:text-white' %>">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <span class="font-medium">الطلبات</span>
+        </a>
+        <a href="/dashboard/team"
+          class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 <%= page === 'team' ? 'bg-gold-400/10 text-gold-400 border border-gold-400/20' : 'text-dark-200 hover:bg-dark-700/50 hover:text-white' %>">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+          </svg>
+          <span class="font-medium">الإدارة</span>
+        </a>
+      </nav>
+
+      <!-- User Profile -->
+      <div class="p-4 border-t border-dark-600/50">
+        <div class="flex items-center gap-3 px-3 py-2">
+          <img src="<%= user.photo %>" alt="<%= user.name %>"
+            class="w-10 h-10 rounded-full border-2 border-gold-400/30 object-cover" referrerpolicy="no-referrer">
+          <div class="flex-1 min-w-0">
+            <p class="font-medium text-sm truncate">
+              <%= user.name %>
+            </p>
+            <p class="text-xs text-dark-300 truncate">
+              <%= user.email %>
+            </p>
+          </div>
+        </div>
+        <a href="/auth/logout"
+          class="mt-3 w-full flex items-center justify-center gap-2 px-4 py-2 text-sm text-red-400 hover:bg-red-400/10 rounded-xl transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+          </svg>
+          تسجيل خروج
+        </a>
+      </div>
+    </aside>
+
+    <!-- Mobile sidebar toggle -->
+    <button id="sidebarToggle"
+      class="lg:hidden fixed top-4 right-4 z-[60] w-10 h-10 bg-dark-700/90 backdrop-blur rounded-xl flex items-center justify-center text-white border border-dark-500/50">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+
+    <!-- Main Content -->
+    <main class="flex-1 mr-72 p-8">
+      <%- body %>
+    </main>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    // Socket.io Client Implementation
+    const socket = io({
+      auth: { token: '<%= typeof authToken !== "undefined" ? authToken : "" %>' }
+    });
+
+    socket.on('connect', () => {
+      console.log('Socket.io connected successfully:', socket.id);
+    });
+
+    socket.on('new_request', (request) => {
+      console.log('New request received via socket!', request);
+
+      // Play a simple notification sound
+      try {
+        const audio = new Audio('https://actions.google.com/sounds/v1/alarms/beep_short.ogg');
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            console.log("Autoplay blocked. User needs to interact with the dashboard first:", error);
+          });
+        }
+      } catch (e) {
+        console.error("Audio API error", e);
+      }
+
+      // Show toast notification
+      const toast = document.createElement('div');
+      toast.className = 'fixed top-4 left-4 z-[100] bg-dark-800 border-r-4 border-gold-400 p-4 rounded-xl shadow-lg flex items-center gap-3 animate-fadeIn transition-all transform translate-x-0';
+      toast.innerHTML = `
+        <div class="w-10 h-10 rounded-full bg-gold-400/20 flex items-center justify-center text-gold-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+        </div>
+        <div>
+          <h4 class="font-bold text-white">طلب جديد!</h4>
+          <p class="text-sm text-dark-200">هناك طلب جديد من ${request.name}</p>
+        </div>
+      `;
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', '-translate-x-full');
+        setTimeout(() => toast.remove(), 300);
+      }, 5000);
+
+      // Update UI dynamically without page refresh
+      if (typeof loadRequests === 'function') {
+        loadRequests(currentPage);
+      }
+    });
+  </script>
+  <script>
+    // Mobile sidebar
+    const sidebar = document.querySelector('aside');
+    const toggle = document.getElementById('sidebarToggle');
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        sidebar.classList.toggle('translate-x-full');
+      });
+    }
+  </script>
+</body>
+
+</html>

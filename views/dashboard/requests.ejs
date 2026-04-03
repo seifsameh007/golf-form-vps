@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= title %>
+  </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { tajawal: ['Tajawal', 'sans-serif'] },
+          colors: {
+            gold: { 50: '#fdf9e7', 100: '#fbf0b5', 200: '#f5e06b', 300: '#e8c820', 400: '#d4af37', 500: '#b8960c', 600: '#957a0a', 700: '#715c08', 800: '#4d3f06', 900: '#2a2103' },
+            dark: { 50: '#f5f5f5', 100: '#e0e0e0', 200: '#b0b0b0', 300: '#808080', 400: '#505050', 500: '#303030', 600: '#252525', 700: '#1a1a1a', 800: '#111111', 900: '#0a0a0a' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="font-tajawal bg-dark-900 text-white min-h-screen">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside
+      class="w-72 bg-dark-800/90 backdrop-blur-xl border-l border-dark-600/50 flex flex-col fixed right-0 top-0 bottom-0 z-50">
+      <div class="p-6 border-b border-dark-600/50">
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400/30 to-gold-600/10 flex items-center justify-center">
+            <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="font-bold text-white">Golf House</h2>
+            <p class="text-xs text-dark-300">لوحة التحكم</p>
+          </div>
+        </div>
+      </div>
+      <nav class="flex-1 p-4 space-y-2">
+        <a href="/dashboard"
+          class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 text-dark-200 hover:bg-dark-700/50 hover:text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+          </svg>
+          <span class="font-medium">لمحة</span>
+        </a>
+        <a href="/dashboard/projects"
+          class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 text-dark-200 hover:bg-dark-700/50 hover:text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+          <span class="font-medium">المشروعات</span>
+        </a>
+        <a href="/dashboard/requests"
+          class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 bg-gold-400/10 text-gold-400 border border-gold-400/20">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <span class="font-medium">الطلبات</span>
+        </a>
+        <a href="/dashboard/team"
+          class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 text-dark-200 hover:bg-dark-700/50 hover:text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+          </svg>
+          <span class="font-medium">الإدارة</span>
+        </a>
+      </nav>
+      <div class="p-4 border-t border-dark-600/50">
+        <div class="flex items-center gap-3 px-3 py-2">
+          <img src="<%= user.photo %>" alt="<%= user.name %>"
+            class="w-10 h-10 rounded-full border-2 border-gold-400/30 object-cover" referrerpolicy="no-referrer">
+          <div class="flex-1 min-w-0">
+            <p class="font-medium text-sm truncate">
+              <%= user.name %>
+            </p>
+            <p class="text-xs text-dark-300 truncate">
+              <%= user.email %>
+            </p>
+          </div>
+        </div>
+        <a href="/auth/logout"
+          class="mt-3 w-full flex items-center justify-center gap-2 px-4 py-2 text-sm text-red-400 hover:bg-red-400/10 rounded-xl transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+          </svg>
+          تسجيل خروج
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 mr-72 p-8">
+      <!-- Header -->
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h1 class="text-3xl font-bold">الطلبات</h1>
+          <p class="text-dark-300 mt-1">إدارة طلبات العملاء</p>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="flex flex-wrap gap-4 mb-6">
+        <div class="flex-1 min-w-[200px]">
+          <div class="relative">
+            <svg class="w-5 h-5 text-dark-400 absolute right-3 top-1/2 -translate-y-1/2" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input type="text" id="searchInput" placeholder="بحث بالاسم أو الرقم..."
+              class="w-full py-3 pr-10 pl-4 bg-dark-800/60 border border-dark-600/30 rounded-xl text-white placeholder-dark-400 focus:border-gold-400/50 outline-none transition-all">
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="filterRequests('الكل')"
+            class="filter-btn active-filter px-5 py-3 rounded-xl font-medium text-sm transition-all"
+            data-filter="الكل">الكل</button>
+          <button onclick="filterRequests('قيد المراجعة')"
+            class="filter-btn px-5 py-3 rounded-xl font-medium text-sm transition-all bg-dark-700/50 text-dark-300 hover:text-white"
+            data-filter="قيد المراجعة">قيد المراجعة</button>
+          <button onclick="filterRequests('اشتري')"
+            class="filter-btn px-5 py-3 rounded-xl font-medium text-sm transition-all bg-dark-700/50 text-dark-300 hover:text-white"
+            data-filter="اشتري">اشتري</button>
+          <button onclick="filterRequests('لم يشتري')"
+            class="filter-btn px-5 py-3 rounded-xl font-medium text-sm transition-all bg-dark-700/50 text-dark-300 hover:text-white"
+            data-filter="لم يشتري">لم يشتري</button>
+          <button onclick="filterRequests('محذوف')"
+            class="filter-btn px-5 py-3 rounded-xl font-medium text-sm transition-all bg-dark-700/50 text-dark-300 hover:text-white"
+            data-filter="محذوف">سلة المحذوفات 🗑️</button>
+        </div>
+      </div>
+
+      <!-- Requests List -->
+      <div id="requestsList" class="space-y-4">
+        <div class="text-center py-16 text-dark-400">
+          <svg class="w-12 h-12 mx-auto mb-4 animate-spin text-gold-400" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          <p>جاري تحميل الطلبات...</p>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div id="pagination" class="flex items-center justify-center gap-2 mt-8" style="display:none;">
+      </div>
+    </main>
+  </div>
+
+  <!-- Delete Modal -->
+  <div id="deleteModal" class="hidden fixed inset-0 z-[100] bg-dark-900/80 backdrop-blur-sm items-center justify-center">
+    <div class="bg-dark-800 border border-dark-600 rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl">
+      <div class="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-6">
+        <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+      </div>
+      <h3 class="text-2xl font-bold text-center mb-2">تأكيد الحذف</h3>
+      <p id="deleteModalText" class="text-dark-300 text-center mb-8">هل أنت متأكد؟</p>
+      <div class="flex gap-4">
+        <button onclick="closeDeleteModal()" class="flex-1 py-3 px-4 bg-dark-700 hover:bg-dark-600 text-white font-medium rounded-xl transition-all">إلغاء</button>
+        <button id="confirmDeleteBtn" class="flex-1 py-3 px-4 bg-red-600 hover:bg-red-500 text-white font-medium rounded-xl transition-all">تأكيد</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentFilter = 'الكل';
+    let currentSearch = '';
+    let currentPage = 1;
+
+    // Load requests
+    async function loadRequests(page = 1) {
+      currentPage = page;
+      const params = new URLSearchParams({ page, limit: 20 });
+      if (currentFilter === 'محذوف') {
+        params.append('isTrash', 'true');
+      } else {
+        if (currentFilter !== 'الكل') params.append('status', currentFilter);
+      }
+      if (currentSearch) params.append('search', currentSearch);
+
+      try {
+        const res = await fetch('/api/requests?' + params);
+        const data = await res.json();
+        renderRequests(data.requests);
+        renderPagination(data);
+      } catch (err) {
+        document.getElementById('requestsList').innerHTML =
+          '<div class="text-center py-16 text-red-400">حدث خطأ أثناء تحميل الطلبات</div>';
+      }
+    }
+
+    function renderRequests(requests) {
+      const container = document.getElementById('requestsList');
+      if (!requests || requests.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-16 text-dark-400">
+            <svg class="w-16 h-16 mx-auto mb-4 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <p class="text-lg">لا توجد طلبات</p>
+          </div>`;
+        return;
+      }
+
+      container.innerHTML = requests.map(req => {
+        const statusColors = {
+          'قيد المراجعة': 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
+          'اشتري': 'bg-green-500/10 text-green-400 border-green-500/20',
+          'لم يشتري': 'bg-red-500/10 text-red-400 border-red-500/20'
+        };
+        const statusColor = statusColors[req.status] || statusColors['قيد المراجعة'];
+        const date = new Date(req.createdAt).toLocaleDateString('ar-EG', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+        const phone = req.phone.replace(/^0/, '');
+
+        return `
+        <div class="bg-dark-800/60 backdrop-blur border border-dark-600/30 rounded-2xl p-6 hover:border-dark-500/50 transition-all duration-300 request-card">
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <!-- Client Info -->
+            <div class="flex-1 min-w-[200px]">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-gold-400/10 flex items-center justify-center">
+                  <span class="text-gold-400 font-bold text-sm">${req.name.charAt(0)}</span>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <h3 class="font-bold text-lg">${req.name}</h3>
+                    <span class="px-2 py-0.5 bg-dark-600 border border-dark-500 rounded text-xs text-gold-400 font-bold">${req.project ? req.project.name : 'العام'}</span>
+                  </div>
+                  <div class="flex items-center gap-2 mt-1">
+                    <p class="text-dark-300 text-sm whitespace-nowrap" dir="ltr">${req.phone}</p>
+                    <span class="text-dark-500 text-xs">•</span>
+                    <p class="text-dark-300 text-sm">${date}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
+                <div class="bg-dark-700/40 rounded-xl p-3">
+                  <span class="text-dark-400 text-xs">الغرف</span>
+                  <p class="font-bold text-sm mt-1">${req.rooms}</p>
+                </div>
+                <div class="bg-dark-700/40 rounded-xl p-3">
+                  <span class="text-dark-400 text-xs">المعاد</span>
+                  <p class="font-bold text-sm mt-1">${req.preferredDay} - ${req.preferredTime}</p>
+                </div>
+                <div class="bg-dark-700/40 rounded-xl p-3">
+                  <span class="text-dark-400 text-xs">الوظيفة</span>
+                  <p class="font-bold text-sm mt-1">${req.jobTitle || 'غير محدد'}</p>
+                </div>
+              </div>
+              ${req.email ? `<p class="text-dark-300 text-sm mt-2">📧 ${req.email}</p>` : ''}
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-col items-end gap-3">
+              ${currentFilter === 'محذوف' ? `
+                <button onclick="restoreRequest('${req._id}')" class="flex items-center justify-center gap-2 w-full mt-1 px-4 py-2 bg-green-500/10 text-green-400 rounded-xl hover:bg-green-500/20 transition-all text-sm font-medium border border-green-500/20">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                  استرجاع
+                </button>
+                <button onclick="openDeleteModal('${req._id}')" class="flex items-center justify-center gap-2 w-full mt-1 px-4 py-2 bg-red-500/10 text-red-400 rounded-xl hover:bg-red-500/20 transition-all text-sm font-medium border border-red-500/20">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                  حذف نهائي
+                </button>
+              ` : `
+              <!-- Status -->
+              <select onchange="updateStatus('${req._id}', this.value)" class="px-4 py-2 rounded-xl text-sm font-medium border ${statusColor} bg-transparent outline-none cursor-pointer">
+                <option value="قيد المراجعة" ${req.status === 'قيد المراجعة' ? 'selected' : ''}>⏳ قيد المراجعة</option>
+                <option value="اشتري" ${req.status === 'اشتري' ? 'selected' : ''}>✅ اشتري</option>
+                <option value="لم يشتري" ${req.status === 'لم يشتري' ? 'selected' : ''}>❌ لم يشتري</option>
+              </select>
+
+              <!-- Contact Buttons -->
+              <div class="flex gap-2">
+                <a href="tel:+20${phone}" class="flex items-center gap-2 px-4 py-2 bg-blue-500/10 text-blue-400 rounded-xl hover:bg-blue-500/20 transition-all text-sm font-medium border border-blue-500/20">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                  اتصال
+                </a>
+                ${(req.hasWhatsApp || req.whatsappNumber) ? `
+                <a href="https://wa.me/+20${(req.whatsappNumber || req.phone).replace(/^0/, '')}" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-green-500/10 text-green-400 rounded-xl hover:bg-green-500/20 transition-all text-sm font-medium border border-green-500/20">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  واتساب
+                </a>` : ''}
+              </div>
+
+              <!-- Delete -->
+              <button onclick="openDeleteModal('${req._id}')" class="flex items-center justify-center gap-2 w-full mt-1 px-4 py-2 bg-red-500/10 text-red-400 rounded-xl hover:bg-red-500/20 transition-all text-sm font-medium border border-red-500/20">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                حذف الطلب
+              </button>
+              `}
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    function renderPagination(data) {
+      const container = document.getElementById('pagination');
+      if (data.pages <= 1) { container.style.display = 'none'; return; }
+      container.style.display = 'flex';
+      let html = '';
+      for (let i = 1; i <= data.pages; i++) {
+        html += `<button onclick="loadRequests(${i})" class="w-10 h-10 rounded-xl ${i === data.currentPage ? 'bg-gold-400 text-dark-900 font-bold' : 'bg-dark-700/50 text-dark-300 hover:bg-dark-600'} transition-all">${i}</button>`;
+      }
+      container.innerHTML = html;
+    }
+
+    function filterRequests(status) {
+      currentFilter = status;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.dataset.filter === status) {
+          btn.classList.add('active-filter');
+          btn.classList.remove('bg-dark-700/50', 'text-dark-300');
+        } else {
+          btn.classList.remove('active-filter');
+          btn.classList.add('bg-dark-700/50', 'text-dark-300');
+        }
+      });
+      loadRequests(1);
+    }
+
+    async function updateStatus(id, status) {
+      try {
+        await fetch(`/api/requests/${id}/status`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status })
+        });
+        loadRequests(currentPage);
+      } catch (err) {
+        alert('حدث خطأ أثناء تحديث الحالة');
+      }
+    }
+
+    function openDeleteModal(id) {
+      document.getElementById('deleteModal').classList.remove('hidden');
+      document.getElementById('deleteModal').classList.add('flex');
+      const isTrash = currentFilter === 'محذوف';
+      document.getElementById('deleteModalText').textContent = isTrash ? 'هل أنت متأكد من حذف هذا الطلب نهائياً؟ لا يمكن التراجع عن هذا الإجراء.' : 'هل أنت متأكد من نقل هذا الطلب لسلة المحذوفات؟';
+      document.getElementById('confirmDeleteBtn').onclick = () => performDelete(id, isTrash);
+    }
+    
+    function closeDeleteModal() {
+      document.getElementById('deleteModal').classList.add('hidden');
+      document.getElementById('deleteModal').classList.remove('flex');
+    }
+
+    async function performDelete(id, isHard) {
+      closeDeleteModal();
+      try {
+        await fetch(`/api/requests/${id}` + (isHard ? '?hard=true' : ''), { method: 'DELETE' });
+        loadRequests(currentPage);
+      } catch (err) {
+        alert('حدث خطأ أثناء الحذف');
+      }
+    }
+    
+    async function restoreRequest(id) {
+      try {
+        await fetch(`/api/requests/${id}/restore`, { method: 'PATCH' });
+        loadRequests(currentPage);
+      } catch (err) {
+        alert('حدث خطأ أثناء استرجاع الطلب');
+      }
+    }
+
+    // Search debounce
+    let searchTimeout;
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        currentSearch = e.target.value.trim();
+        loadRequests(1);
+      }, 400);
+    });
+
+    // Initial load
+    loadRequests();
+  </script>
+</body>
+
+</html>
