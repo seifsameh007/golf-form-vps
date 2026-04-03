@@ -30,9 +30,12 @@
 
 <body class="font-tajawal bg-dark-900 text-white min-h-screen">
   <div class="flex min-h-screen">
+    <!-- Mobile Overlay -->
+    <div id="sidebarOverlay" class="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden"></div>
+
     <!-- Sidebar -->
-    <aside
-      class="w-72 bg-dark-800/90 backdrop-blur-xl border-l border-dark-600/50 flex flex-col fixed right-0 top-0 bottom-0 z-50">
+    <aside id="sidebar"
+      class="w-72 bg-dark-800/90 backdrop-blur-xl border-l border-dark-600/50 flex flex-col fixed right-0 top-0 bottom-0 z-50 transform translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
       <!-- Brand -->
       <div class="p-6 border-b border-dark-600/50">
         <div class="flex items-center gap-3">
@@ -103,16 +106,16 @@
       </div>
     </aside>
 
-    <!-- Mobile sidebar toggle -->
+    <!-- Mobile sidebar toggle - Only visible on mobile when sidebar is closed -->
     <button id="sidebarToggle"
-      class="lg:hidden fixed top-4 right-4 z-[60] w-10 h-10 bg-dark-700/90 backdrop-blur rounded-xl flex items-center justify-center text-white border border-dark-500/50">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      class="lg:hidden fixed top-4 left-4 z-[60] w-12 h-12 bg-dark-800/90 backdrop-blur-xl rounded-xl flex items-center justify-center text-white border border-dark-600/50 shadow-lg transition-all hover:bg-dark-700/90 hover:border-gold-400/30">
+      <svg id="menuIcon" class="w-6 h-6 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
       </svg>
     </button>
 
     <!-- Main Content -->
-    <main class="flex-1 mr-72 p-8">
+    <main class="flex-1 lg:mr-72 p-4 lg:p-8 pt-20 lg:pt-8">
       <%- body %>
     </main>
   </div>
@@ -171,11 +174,52 @@
   </script>
   <script>
     // Mobile sidebar
-    const sidebar = document.querySelector('aside');
+    const sidebar = document.getElementById('sidebar');
     const toggle = document.getElementById('sidebarToggle');
-    if (toggle) {
+    const overlay = document.getElementById('sidebarOverlay');
+    const menuIcon = document.getElementById('menuIcon');
+    
+    if (toggle && sidebar && overlay && menuIcon) {
+      // Toggle sidebar
       toggle.addEventListener('click', () => {
-        sidebar.classList.toggle('translate-x-full');
+        const isOpen = !sidebar.classList.contains('translate-x-full');
+        
+        if (isOpen) {
+          // Close sidebar
+          sidebar.classList.add('translate-x-full');
+          overlay.classList.add('hidden');
+          document.body.style.overflow = '';
+          // Change icon to right arrow (open)
+          menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />';
+        } else {
+          // Open sidebar
+          sidebar.classList.remove('translate-x-full');
+          overlay.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+          // Change icon to left arrow (close)
+          menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />';
+        }
+      });
+      
+      // Close sidebar when clicking overlay
+      overlay.addEventListener('click', () => {
+        sidebar.classList.add('translate-x-full');
+        overlay.classList.add('hidden');
+        document.body.style.overflow = '';
+        menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />';
+      });
+      
+      // Close sidebar when clicking a link
+      const sidebarLinks = sidebar.querySelectorAll('a');
+      sidebarLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth < 1024) {
+            sidebar.classList.add('translate-x-full');
+            overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+            menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />';
+          }
+        });
       });
     }
   </script>
